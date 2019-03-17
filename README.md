@@ -24,3 +24,94 @@
 ## 除法运算
 除法运算符`/`，得到的是浮点数;运算符`//`，得到的是整除数；而运算符`%`，得到的是余数。
 （PS：在java中，只有当除数或者被除数有一个为浮点数，运算符`/`才得到浮点数；运算符`%`同样是取余数）
+## 字符编码
+### ASCII编码
+- 8个bit作为一个字节，即一个字节能表示的最大的整数就是`255`（二进制11111111=十进制255）
+### GB2312编码
+- 补充ASCII编码的中文编码，至少使用两个字节处理中文
+- 几乎全世界每种语言都有其对应的语言编码
+### Unicode
+- 将所有语言统一到一套编码，一般一个字符用两个字节表示
+
+如：字母`A`用ASCII编码是十进制的`65`，二进制的`01000001`
+
+而`A`的Unicode编码是`00000000 01000001`，即在ASCII前面补0即可。
+
+### UTF-8
+- 解决Unicode编码在存储和传输 英文字符 上比ASCII编码多一倍存储空间的缺陷
+- “可变长编码”的UTF-8编码
+    - 常用英文字符：1个字节(也就可以说UTF-8兼容ASCII编码)
+    - 一般汉字字符：3个字节
+    - 生僻字符：4-6个字节
+
+如用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件
+![记事本编码](https://cdn.liaoxuefeng.com/cdn/files/attachments/001387245992536e2ba28125cf04f5c8985dbc94a02245e000/0)
+浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器（代码声明使用UTF-8:`<meta charset="UTF-8" />``）：
+![浏览器编码](https://cdn.liaoxuefeng.com/cdn/files/attachments/001387245979827634fd6204f9346a1ae6358d9ed051666000/0)
+## 字符串
+- python3 版本的字符串是以Unicode编码的
+- 字符与整数（十进制编码）的相互转换
+    - 获取整数（编码）表示  `ord()`
+    - 获取字符表示  `chr()`
+    ```python
+    print('A字符的编码表示',ord('A'))
+    print('中字符的编码表示',ord('中'))
+    print('编码65的字符表示',chr(65))
+    ```
+    ```
+    A字符的编码表示 65
+    中字符的编码表示 20013
+    编码65的字符表示 A
+    ```
+- 字节类型`bytes`用带b前缀的单引号或双引号表示，我们在对字符串进行存储或者传输时就是使用字节类型`bytes`
+- 字符串与字节的相互转换
+    - 将字符串转成字节`encode()`,接收转换编码类型的字符表示
+    ```python
+    print('ABC'.encode('ascii'))
+    print('中文'.encode('utf-8'))
+    print('中文'.encode('ascii'))
+    ```
+    ```
+    b'ABC'
+    b'\xe4\xb8\xad\xe6\x96\x87'
+        print('中文'.encode('ascii'))
+    UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+    ```
+    含有中文|的str无法用ASCII编码，因为中文编码的范围超过了ASCII编码的范围，Python会报错。
+    - 将字节流转换成字符`decode()`,接收解码类型的字符表示，还可以传入errors='ignore'忽略错误的字节
+    ```python
+    print(b'ABC'.decode('ascii'))
+    print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'))    
+    print(b'\xe4\xb8\xad\xff'.decode('utf-8',errors='ignore'))
+    ```
+    ```
+    ABC
+    中文
+    中
+    ```
+    - `len()`计算字符个数或者字节个数
+- python 源码文件使用以下代码表明编码类型
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+```
+第一行注释是为了告诉Linux/OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；
+
+第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。
+- 使用占位符
+    - %d	整数
+    - %f	浮点数
+    - %s	字符串
+    - %x	十六进制整数
+    - %% 表示%
+```python
+print('Hello, %s' % 'world')
+print("my name is %s,I'm  %d. " % ('joson',24))
+print('growth rate: %d %%' % 7)
+
+```
+```
+Hello, world
+my name is joson,I'm  24.
+growth rate: 7 %
+```
