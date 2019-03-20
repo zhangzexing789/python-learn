@@ -115,3 +115,66 @@ Hello, world
 my name is joson,I'm  24.
 growth rate: 7 %
 ```
+## list 和 tuple
+### list
+- list 是可变的有序集合,使用`[]`定义集合，`len()`方法获取长度，`[index]`正序获取元素，`[-index]`倒序获取元素
+```python
+classmates = ['jack','mike','joson']
+print('集合classmates 是 %s ,其长度为 %d ,第一个是 %s' % (classmates,len(classmates),classmates[0]))
+print('倒数第一是 %s，倒数第二是 %s' % (classmates[-1],classmates[-2]))
+```
+```
+集合classmates 是 ['jack', 'mike', 'joson'] ,其长度为 3 ,第一个是 jack
+倒数第一是 joson，倒数第二是 mike
+```
+- list 的方法
+  - append('str')  追加元素到末尾
+  - insert(index,'str') 指定位置插入元素  
+  - pop(index) 删除指定位置元素，不指定的话删除末尾元素
+  - count('str')  指定元素出现的次数
+  - clear() 清空集合
+  - copy() 返回一个集合副本
+
+```python
+classmates.append('hason')
+print(classmates)
+classmates.insert(0,'jerry')
+print(classmates)
+classmates.pop()
+print(classmates)
+print('hason 出现次数：',classmates.count('joson'))
+list = classmates.copy()
+print('复制的集合：',list)
+classmates.clear()
+print(classmates)
+```
+```
+['jack', 'mike', 'joson', 'hason']
+['jerry', 'jack', 'mike', 'joson', 'hason']
+['jerry', 'jack', 'mike', 'joson']
+hason 出现次数： 1
+复制的集合： ['jerry', 'jack', 'mike', 'joson']
+[]
+```
+### tuple
+- tuple 是从定义开始就不可变的元组
+  - count() 元素出现的次数
+  - index() 元素第一次出现的位置
+- 在定义一个元素的tuple时，应该在元素再加上逗号，免得与`()`运算混淆了，即`tuple = (1,)`
+```python
+tuple = ('a','b','c','a')
+print(tuple)
+print('c 出现的次数：',tuple.count('c'))
+print('c 第一次出现在：',tuple.index('c'))
+t1 = (1,)
+t2 = (1)
+print('元组t1:',t1)
+print('整数t2:',t2)
+```
+```
+('a', 'b', 'c', 'a')
+c 出现的次数： 1
+c 第一次出现在： 2
+元组t1: (1,)
+整数t2: 1
+```
