@@ -4,32 +4,54 @@
 - 时间：1989年圣诞节
 - 定位：优雅、明确、简单。“The lift is short,I use python.”
 - 特点：作为高级编程语言，提供了大量的第三库，可以提高开发效率；当然python也是解释型语言，所以运行速度慢；源码不能加密，发布产品即是发布源码。
+
 ## python 解释器（开源）
 - CPython(官方解释器)
 - IPython：基于CPython的交互式解释器，所以在交互方面有所增强
 - PyPy：采用JIT技术，对Python代码进行动态编译，目的是提高Python的执行速度
 - JPython：运行在Java平台的解释器，可以直接把Python代码编译成Java字节码执行。
 - IronPython：运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。
+
 ## 数据类型
 - 整数
 - 浮点数 如1.23e9 表示1.23x10^9
 - 字符串，使用' '或者" "表示<br>如果需要显示' '，用" "包含即可；<br> 如需要显示" "，则使用转义字符 \\ ;<br> 如果需要多个转义字符，则使用r' '。
 - 布尔值（true,false）运算（and,or,not）
 - 空值（None）
+- 数据类型的转换
+  - int(x [,base ])         将x转换为一个整数    
+  - long(x [,base ])        将x转换为一个长整数    
+  - float(x )               将x转换到一个浮点数    
+  - complex(real [,imag ])  创建一个复数    
+  - str(x )                 将对象 x 转换为字符串    
+  - repr(x )                将对象 x 转换为表达式字符串    
+  - eval(str )              用来计算在字符串中的有效Python表达式,并返回一个对象    
+  - tuple(s )               将序列 s 转换为一个元组    
+  - list(s )                将序列 s 转换为一个列表    
+  - chr(x )                 将一个整数转换为一个字符    
+  - unichr(x )              将一个整数转换为Unicode字符    
+  - ord(x )                 将一个字符转换为它的整数值    
+  - hex(x )                 将一个整数转换为一个十六进制字符串    
+  - oct(x )                 将一个整数转换为一个八进制字符串   
+
 ## 变量
 - 变量名必须是大小写英文、数字和_的组合，且不能用数字开头。
 - 由于Python是动态语言，所以可以把任意数据类型赋值给变量，同一个变量可以反复赋值，而且可以是不同类型的变量。
+
 ## 常量
 使用大写字母代表常量
+
 ## 除法运算
 除法运算符`/`，得到的是浮点数;运算符`//`，得到的是整除数；而运算符`%`，得到的是余数。
 （PS：在java中，只有当除数或者被除数有一个为浮点数，运算符`/`才得到浮点数；运算符`%`同样是取余数）
+
 ## 字符编码
 ### ASCII编码
 - 8个bit作为一个字节，即一个字节能表示的最大的整数就是`255`（二进制11111111=十进制255）
 ### GB2312编码
 - 补充ASCII编码的中文编码，至少使用两个字节处理中文
 - 几乎全世界每种语言都有其对应的语言编码
+
 ### Unicode
 - 将所有语言统一到一套编码，一般一个字符用两个字节表示
 
@@ -53,6 +75,7 @@
 - 字符与整数（十进制编码）的相互转换
     - 获取整数（编码）表示  `ord()`
     - 获取字符表示  `chr()`
+
     ```python
     print('A字符的编码表示',ord('A'))
     print('中字符的编码表示',ord('中'))
@@ -63,9 +86,11 @@
     中字符的编码表示 20013
     编码65的字符表示 A
     ```
+
 - 字节类型`bytes`用带b前缀的单引号或双引号表示，我们在对字符串进行存储或者传输时就是使用字节类型`bytes`
 - 字符串与字节的相互转换
     - 将字符串转成字节`encode()`,接收转换编码类型的字符表示
+
     ```python
     print('ABC'.encode('ascii'))
     print('中文'.encode('utf-8'))
@@ -79,6 +104,7 @@
     ```
     含有中文|的str无法用ASCII编码，因为中文编码的范围超过了ASCII编码的范围，Python会报错。
     - 将字节流转换成字符`decode()`,接收解码类型的字符表示，还可以传入errors='ignore'忽略错误的字节
+
     ```python
     print(b'ABC'.decode('ascii'))
     print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'))    
@@ -104,20 +130,24 @@
     - %s	字符串
     - %x	十六进制整数
     - %% 表示%
+
 ```python
 print('Hello, %s' % 'world')
 print("my name is %s,I'm  %d. " % ('joson',24))
 print('growth rate: %d %%' % 7)
 
 ```
+
 ```
 Hello, world
 my name is joson,I'm  24.
 growth rate: 7 %
 ```
+
 ## list 和 tuple
 ### list
 - list 是可变的有序集合,使用`[]`定义集合，`len()`方法获取长度，`[index]`正序获取元素，`[-index]`倒序获取元素
+
 ```python
 classmates = ['jack','mike','joson']
 print('集合classmates 是 %s ,其长度为 %d ,第一个是 %s' % (classmates,len(classmates),classmates[0]))
@@ -127,6 +157,7 @@ print('倒数第一是 %s，倒数第二是 %s' % (classmates[-1],classmates[-2]
 集合classmates 是 ['jack', 'mike', 'joson'] ,其长度为 3 ,第一个是 jack
 倒数第一是 joson，倒数第二是 mike
 ```
+
 - list 的方法
   - append('str')  追加元素到末尾
   - insert(index,'str') 指定位置插入元素  
@@ -156,6 +187,7 @@ hason 出现次数： 1
 复制的集合： ['jerry', 'jack', 'mike', 'joson']
 []
 ```
+
 ### tuple
 - tuple 是从定义开始就不可变的元组
   - count() 元素出现的次数
@@ -177,4 +209,110 @@ c 出现的次数： 1
 c 第一次出现在： 2
 元组t1: (1,)
 整数t2: 1
+```
+
+## 条件判断
+- 使用`if`，冒号`:`和缩进`  `组成判断语句
+```python
+age = input('请输入你的年龄：')
+if int(age) < 18:
+    print('你好，青少年！')
+else:
+    print('你好，少年！')
+```
+- 使用`elif`
+
+  ```python
+  age = input('请输入你的年龄：')
+  if int(age) < 18:
+      print('你好，青少年！')
+  elif int(age) < 50:
+      print('你好，少年！')
+  else:
+      print('你好，老年人！')
+
+  ```
+- 直接简写判断条件，如`if x:`，则只要x是非零数值、非空字符串、非空list等，就判断为`True`，否则为`False`。
+
+  ```prthon
+  age = input('请输入你的年龄：')
+  if age:
+      if int(age) < 18:
+          print('你好，青少年！')
+      elif int(age) < 50:
+          print('你好，少年！')
+      else:
+          print('你好，老年人！')
+  else:
+      print('未输入年龄，程序退出！')
+  ```
+  ```
+  请输入你的年龄：
+未输入年龄，程序退出！
+```
+
+## 循环
+### for循环
+- 使用`for x in ...`,把每个元素代入变量x，然后执行缩进块的语句
+```python
+num = [0,1,2,3,4,5]
+sum = 0
+for n in num:
+    sum = sum+n
+print(num,'的和是：',sum)
+```
+```
+[0, 1, 2, 3, 4, 5] 的和是： 15
+```
+- 使用`rang()`函数在整数序列取数,如 `range(5)`生成的序列是从0开始小于5的整数
+```python
+num = range(101)
+sum = 0
+for n in num:
+    sum = sum+n
+print(num,'的和是：',sum)
+```
+```
+range(0, 101) 的和是： 5050
+```
+### while 循环
+- 循环直至不满足条件，也可以使用`break`直接退出循环，还有`continue`退出当前循环，进行下一次循环
+```python
+sum = 0
+num = 1
+while num <= 99:
+    sum = sum + num
+    num = num + 2
+print('99以内所有奇数的和：',sum)
+```
+```
+99以内所有奇数的和： 2500
+```
+
+## dict 和 set
+### dict
+- 也就是java中的map，即key-value存储
+
+```python
+dict = {'a': 1, 'b': 2, 'c': 3, 'a': 5}
+dict['b'] = 10
+print(dict)
+```
+```
+{'a': 5, 'b': 10, 'c': 3}
+```
+
+重复key值，后面对应的value值将覆盖前面的,也可以直接重新赋值
+### set
+- set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。可以看做是元素不重复的list
+
+```python
+set = ([1, 3, 5, 7])
+print('set', set)
+list = [1, 3, 1]
+print('list:', list)
+```
+```
+[1, 3, 5, 7]
+[1, 3, 1]
 ```
