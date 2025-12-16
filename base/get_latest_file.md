@@ -1,3 +1,5 @@
+^Xceptor/(Precis/input/[^/]+|V3(/ghss/(?!HKHIFSF)[^/]+|/[^/]+))$
+
 import boto3
 from datetime import datetime, timedelta, timezone
 
