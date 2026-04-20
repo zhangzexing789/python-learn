@@ -116,3 +116,19 @@ Return the result as a structured report.
 请先给我看看草稿。
 
 暂时不要创建文件。
+
+
+Use the repository instructions, the create-xceptor-dag prompt pattern, and the xceptor-airflow-dag skill to design a new DAG for the following requirement:
+
+[这里写你的真实需求]
+
+Important:
+- First inspect similar DAGs in the repository.
+- Reuse existing helpers and conventions.
+- Do not modify production files yet.
+- First show:
+  1. similar DAGs found
+  2. extracted pattern
+  3. assumptions
+  4. proposed DAG layout
+- Only then generate the DAG code.
