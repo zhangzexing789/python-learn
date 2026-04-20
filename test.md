@@ -45,3 +45,32 @@ Return the result as a structured report.
 暂时不要编写文件。
 
 请先给我看看草稿。
+
+
+现在，请起草一份可复用的提示文件，用于创建新的 Xceptor Airflow DAG。
+
+目标文件：
+
+.github/prompts/create-xceptor-dag.prompt.md
+
+要求：
+
+- 此提示应引导 Copilot 根据业务需求创建新的 DAG。
+
+- 它应指示 Copilot 首先检查代码库中类似的 DAG。
+
+- 它应要求重用现有的辅助函数和模式。
+
+- 当缺少输入时，它应明确询问假设条件。
+
+- 它应输出：
+
+1. 类似 DAG 的分析
+
+2. 建议的 DAG 结构
+
+3. 生成的代码
+
+4. 审核清单
+
+请先给我看看草稿。暂时不要创建文件。
