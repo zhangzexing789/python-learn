@@ -74,3 +74,45 @@ Return the result as a structured report.
 4. 审核清单
 
 请先给我看看草稿。暂时不要创建文件。
+
+现在请为 Xceptor Airflow DAG 生成编写一个代理技能。
+
+目标文件夹：
+
+.github/skills/xceptor-airflow-dag/
+
+目标文件：
+
+.github/skills/xceptor-airflow-dag/SKILL.md
+
+要求：
+
+- 说明何时应使用此技能。
+
+- 要求在生成新代码之前检查现有的 DAG。
+
+- 优先使用现有的仓库辅助方法和约定，而不是通用模式。
+
+- 定义预期的工作流程：
+
+1. 检查示例
+
+2. 识别固定约定和可变输入
+
+3. 提出结构建议
+
+4. 生成代码
+
+5. 提供审查清单
+
+- 参考支持资源：
+
+- examples/
+
+- templates/
+
+- checklists/
+
+请先给我看看草稿。
+
+暂时不要创建文件。
