@@ -22,3 +22,26 @@ Stage 1 - analysis only:
 Do not generate new code yet.
 Do not modify files yet.
 Return the result as a structured report.
+
+
+基于已验证的分析，起草一份仓库级别的 Copilot 指令文件。
+
+目标文件：
+
+.github/copilot-instructions.md
+
+要求：
+
+- 重点关注 Xceptor Airflow DAG 开发的常驻项目规则。
+
+- 包含命名约定、常用导入、辅助函数使用、重试/超时/告警规则以及验证预期。
+
+- 保持简洁易懂，便于操作。
+
+- 不要包含推测性规则。
+
+- 使用 Markdown 格式。
+
+暂时不要编写文件。
+
+请先给我看看草稿。
